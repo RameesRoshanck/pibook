@@ -1,0 +1,55 @@
+.parantDiv{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+    /* color: white; */
+  
+
+}
+.auth-form-conatiner,.login-form{
+    display: flex;
+    flex-direction: column;
+}
+.auth-form-conatiner{
+    background-image:linear-gradient(79deg,#7439db,#c66fbc 48%,#f79440);
+}
+
+@media screen and (min-width:600px){
+    .auth-form-conatiner{
+        padding:5rem !important;
+        border: 1px solid white;
+        border-radius: 10px;
+        margin: .5rem;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }  
+}
+
+label{
+    text-align: left;
+    padding: .25rem;
+}
+
+button{
+    border: none;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+.btn:hover{
+    background-image:linear-gradient(79deg,#7439db,#c66fbc 48%,#f79440);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.link-btn{
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: underline;
+
+}
+.link-btn:hover{
+    color:rgb(12, 12, 65);
+}
