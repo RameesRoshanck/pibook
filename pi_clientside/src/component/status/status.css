@@ -1,0 +1,33 @@
+.status{
+    width:650px;
+    height: 120px;
+    border-radius: 10px;
+    /* background-color: green; */
+    box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.37);
+    -webkit-box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.37);
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.status::-webkit-scrollbar{
+    display: none;
+}
+.statusWraper{
+    padding: 15px;
+    display: flex;
+    
+}
+.statusToper{
+    margin:5px;
+}
+
+.statusImage{
+ width: 60px;
+ height: 60px;
+ border-radius: 50px;
+ cursor: pointer;
+ object-fit: cover;
+}
+
+.statusName{
+    margin-left: 10px;
+}
