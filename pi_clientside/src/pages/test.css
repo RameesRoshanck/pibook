@@ -10,6 +10,19 @@
   outline: none;
 }
   
+  .website-logo {
+  padding:15px;
+  }
+  
+  .middle-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    padding: 0px;
+  }
+  
   .list-item {
     font-size: 16px;
     margin-right: 10px;
@@ -17,6 +30,20 @@
   }
   
 
+  .theme-button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border-style: none;
+    outline: none;
+  }
+  .profileimage{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
 .dropdownbutton{
   padding:6px !important;
 }

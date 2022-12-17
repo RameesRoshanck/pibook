@@ -1,5 +1,5 @@
-import './navbar.css'
 import React from 'react'
+import './test.css'
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -9,8 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 
 
-
-function Navbar() {
+function Test() {
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -79,4 +78,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default Test

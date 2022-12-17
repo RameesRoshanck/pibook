@@ -1,4 +1,5 @@
 import React from 'react'
+import Post from '../Post/Post'
 import Status from '../status/Status'
 import './feed.css'
 
@@ -7,6 +8,7 @@ function Feed() {
     <div className='feed'>
         <div className="feedWrapper">
           <Status/>
+          <Post/>
         </div>
     </div>
   )
