@@ -1,0 +1,58 @@
+.post{
+    margin-top:10px;
+    width: 100%;
+    height: 170px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.37);
+    -webkit-box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.37);
+}
+.postWrapper{
+    padding: 15px;
+}
+.share-top{
+    display: flex;
+    align-items: center;
+}
+.postProfielImg{
+    width:50px;
+    height: 50px;
+    border-radius:60%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.postInput{
+    border: none;
+    outline: none;
+    width: 80%;
+}
+.postInput:focus{
+    outline: none;
+}
+.posthr{
+    margin: 20px;
+}
+.share-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+/* .shareOptions{
+    display: flex;
+    margin-left: 20px;
+} */
+
+.shareOption{
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+}
+.shareIcons{
+    font-size: 18px;
+    margin-right: 3px;
+}
+
+.shareOptionText{
+    font-size:17px;
+    font-weight: 500;
+}
