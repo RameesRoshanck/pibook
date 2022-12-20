@@ -5,13 +5,37 @@ import Status from '../status/Status'
 import './feed.css'
 
 
-function Feed() {
+function Feed({userStatus}) {
+
+  const AddStatus=()=>{
+    return(
+      <>
+       
+       <Post/>
+       <Getpost/> 
+      </>
+    )
+  }
+
+  const RemoveStatus=()=>{
+    return(
+      <>
+      <Status/>
+       <Post/>
+       <Getpost/>  
+      </>
+    )
+  }
+
   return (
     <div className='feed'>
         <div className="feedWrapper">
-          <Status/>
-          <Post/>
-          <Getpost/>
+          {
+            userStatus?
+            <AddStatus/> :
+            <RemoveStatus/>  
+          }
+          
         </div>
     </div>
   )

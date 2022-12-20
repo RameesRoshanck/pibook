@@ -1,63 +1,11 @@
-.nav-bar-container-light {
+.header {
     width: 100%;
     background-color: white;
     border-bottom-style: solid;
     border-bottom-color: #dcdcdc;
     border-bottom-width: 2px;
     height: 67px;
-  }
-.header-logo{
-  outline: none;
-}
-  
-  .website-logo {
-  padding:15px;
-  }
-  
-  .middle-items {
+    justify-content: space-around;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    list-style-type: none;
-    padding: 0px;
   }
-  
-  .list-item {
-    font-size: 16px;
-    margin-right: 10px;
-    font-weight: bold;
-  }
-  
-
-  .theme-button {
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    border-style: none;
-    outline: none;
-  }
-  .profileimage{
-    height: 45px;
-    width: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-    cursor: pointer;
-}
-.dropdownbutton{
-  padding:6px !important;
-}
-.dropdownslide{
-  text-align: -webkit-right;
-  margin-right:8px;
-}
-.dropdown{
-  width:100px;
-  height:100px;
-  background-color: red;
-  border-bottom-style: solid;
-  border-bottom-color: black;
-  border-top-color: black;
-  border-style: solid;
-  border-bottom-width: 2px;
-}

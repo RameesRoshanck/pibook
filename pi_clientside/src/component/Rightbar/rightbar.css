@@ -47,5 +47,49 @@
 }
 .rightBarUserName{
   font-weight: 500;
+  margin-right: auto;
 
+}
+
+.profileRightBarTitle{
+    font-size: 18px;
+    font-weight: 500px;
+    margin-bottom: 10px;
+    /* position: -webkit-sticky;
+    position: sticky;
+    top: 0; */
+}
+.profileRightBarTitle:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.rightbarInfPlace{
+    font-weight: 500;
+    margin-right: 15px;
+    color: #555;
+}
+.rightbarInfPlaceName{
+    font-weight: 300;
+    color: #555;
+}
+.rightBarFollowings{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.rightBarFollowing{
+    display: flex;
+    flex-direction: column;
+    margin-bottom:20px;
+    cursor: pointer;
+    padding-left: 6px;
+}
+.rightBarFollowingImage{
+    width: 100px;
+    height: 100Px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.rightBarFollowingName{
+    max-width: 10px;
 }

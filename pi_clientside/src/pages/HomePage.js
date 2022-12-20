@@ -3,6 +3,7 @@ import Feed from '../component/Feeds/Feed'
 import Navbar from '../component/navbar/Navbar'
 import Rightbar from '../component/Rightbar/Rightbar'
 import Sidebar from '../component/Sidebar/Sidebar'
+import BottomNavbar from '../component/BottomNavbar/BottomNavbar'
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import './homepage.css'
@@ -27,8 +28,11 @@ home() {
        <Grid container item sm={12} md={6}>
        <Feed/>
        </Grid>
-       <Grid container item sm={12}  md={3}>
+       <Grid container item md={3}>
        <Rightbar/>
+       </Grid>
+       <Grid container item sm={12}>
+       <BottomNavbar/>
        </Grid>
      </Grid>
    </Box>

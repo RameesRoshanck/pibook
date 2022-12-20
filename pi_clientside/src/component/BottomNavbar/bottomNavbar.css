@@ -1,0 +1,14 @@
+.header {
+    width: 100%;
+    background-color: white;
+    border-top-style: solid;
+    border-top-color: #dcdcdc;
+    border-top-width: 2px;
+    height: 67px;
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+  }
