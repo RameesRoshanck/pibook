@@ -1,4 +1,4 @@
-.nav-bar-container-light {
+.nav-bar-container-light1 {
     width: 100%;
     background-color: rgb(15, 14, 14);
     border-bottom-style: solid;
@@ -6,6 +6,11 @@
     border-bottom-width: 2px;
     height: 67px;
   }
+.nav-logo{
+  margin-left: 50px;
+  color: #fff !important;
+}
+
 .header-logo{
   outline: none;
 }

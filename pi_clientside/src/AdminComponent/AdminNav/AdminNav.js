@@ -6,9 +6,9 @@ function AdminNav() {
 
     return (
               <div>
-                <div className="nav-bar-container-light grid grid-cols-3 gap-2 ">
+                <div className="nav-bar-container-light1 grid grid-cols-3 gap-2 ">
                   <div className=' header-logo' >
-                      <h1 className="text-3xl font-bold text-white leading-normal pl-3 pb-2 text-slate-800">pi-book</h1>
+                      <h1 className="text-3xl font-bold nav-logo leading-normal pl-3 pb-2 text-slate-800">pi-book</h1>
                   </div>
                   <div class="flex justify-center">
                     <div class="mb-3 xl:w-96">

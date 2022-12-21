@@ -1,59 +1,84 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './adminSideBar.css'
 import GroupIcon from '@mui/icons-material/Group';
-import TvIcon from '@mui/icons-material/Tv';
-import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
-import StarsIcon from '@mui/icons-material/Stars';
-import GroupsIcon from '@mui/icons-material/Groups';
-import MessageIcon from '@mui/icons-material/Message';
-import FlagCircleIcon from '@mui/icons-material/FlagCircle';
+import HomeIcon from '@mui/icons-material/Home';
+import FlagIcon from '@mui/icons-material/Flag';
+import MailIcon from '@mui/icons-material/Mail';
+import LogoutIcon from '@mui/icons-material/Logout';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import NavigationIcon from '@mui/icons-material/Navigation';
+import BlockIcon from '@mui/icons-material/Block';
+import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
+import ReportIcon from '@mui/icons-material/Report';
 
 function AdminSidebar() {
+  const [open,setOpen]=useState(false)
+  const [openPost,setOpenPost]=useState(false)
+  
   return (
     <div className='sideBar'>
         <div className="sidebarWrapper">
-            <ul className="sidebarList">
+              <ul className="sidebarList">
+                <h1 className='dashboard'>Dashboard</h1>
                 <li className="sidebarlistItem">
-                {/* <img src={image} alt="images" className='personelImage sidebarIcon' /> */}
-                <span className='sidebarListItemText' >Mohamed Ramees Roshan ck</span>
+                <HomeIcon className='sidebarIcon' />
+                <span className='sidebarListItemText' >Home</span>
                 </li>
-                <li className="sidebarlistItem">
-                <GroupIcon className='sidebarIcon' />
-                <span className='sidebarListItemText' >Friens</span>
+                <li className="sidebarlistItem1">
+                  <div onClick={(e)=>{setOpen(!open)}}>
+                      <GroupIcon className='sidebarIcon' />
+                      <span className='sidebarListItemText' style={{marginRight:"130px"}} >Users</span>
+                      <ExpandMoreIcon/>
+                  </div>
+                  {open?
+                   <div className="user">
+                   <ul className='sidebarList'>
+                     <li className="childSidebarlistItem2">
+                       <NavigationIcon className='sidebarIcon' />
+                       <span className='sidebarListItemText' >Active Users</span>
+                     </li>
+                     <li className="childSidebarlistItem2">
+                       <BlockIcon className='sidebarIcon' />
+                       <span className='sidebarListItemText' >Blocked Users</span>
+                     </li>
+                   </ul>
+               </div>
+                  :""}
+                 
                 </li>
-                <li className="sidebarlistItem">
-                <TvIcon className='sidebarIcon' />
-                <span className='sidebarListItemText' >watch</span>
+                <li className="sidebarlistItem1">
+                  <div onClick={(e)=>{setOpenPost(!openPost)}}>
+                      <FlagIcon className='sidebarIcon' />
+                      <span className='sidebarListItemText' style={{marginRight:"130px"}} >Posts</span>
+                      <ExpandMoreIcon/>
+                  </div>
+                  {openPost?
+                   <div className="user">
+                   <ul className='sidebarList'>
+                     <li className="childSidebarlistItem2">
+                       <PhotoSizeSelectActualIcon className='sidebarIcon' />
+                       <span className='sidebarListItemText' >Post</span>
+                     </li>
+                     <li className="childSidebarlistItem2">
+                       <ReportIcon className='sidebarIcon' />
+                       <span className='sidebarListItemText' >Blocked Post</span>
+                     </li>
+                   </ul>
+               </div>
+                  :""}
+                 
                 </li>
-                <li className="sidebarlistItem">
-                <WorkHistoryIcon className='sidebarIcon' />
-                <span className='sidebarListItemText' >Most recent</span>
+                <li className="sidebarlistItem2">
+                <MailIcon className='sidebarIcon' />
+                <span className='sidebarListItemText' >inbox</span>
                 </li>
-                <li className="sidebarlistItem">
-                <StarsIcon className='sidebarIcon' />
-                <span className='sidebarListItemText' >favorite</span>
+                <li className="sidebarlistItem2">
+                <LogoutIcon className='sidebarIcon' />
+                <span className='sidebarListItemText' >Logout</span>
                 </li>
-                <li className="sidebarlistItem">
-                <GroupsIcon className='sidebarIcon' />
-                <span className='sidebarListItemText' >Group</span>
-                </li>
-                <li className="sidebarlistItem">
-                <MessageIcon className='sidebarIcon' />
-                <span className='sidebarListItemText' >favorite</span>
-                </li>
-                <li className="sidebarlistItem">
-                <FlagCircleIcon className='sidebarIcon' />
-                <span className='sidebarListItemText' >pages</span>
-                </li>
-            </ul>
+              </ul>
             <hr className='sidebarhr' />
             <br />
-            <ul className="sidebarFriendlist">
-              <li className="sidebarFriend">
-                {/* <img src={image} alt="img" className="sidebarFriendImage" /> */}
-                <span className="sidebarFriendName">Roshan ck</span>
-              </li>
-            </ul>
         </div>
     </div>
   )
