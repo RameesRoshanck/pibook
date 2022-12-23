@@ -10,13 +10,18 @@ function Login() {
         <div className="auth-form-conatiner" >
           <h2>Login</h2>
           <form action="" className="login-form">
-          <TextField id="standard-basic" 
-          label="Email" 
-          variant="standard" />
           <TextField
-          id="standard-password-input"
+          label="email"
+          name='email'
+          id='email'
+          type='email' 
+          variant="standard" />
+          
+          <TextField
+          id="password"
           label="Password"
           type="password"
+          name='password'
           autoComplete="current-password"
           variant="standard"
         />
