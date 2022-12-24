@@ -55,7 +55,7 @@ function Signup() {
               button: false
             })
           }else if(result.data.message==='this email is already exist'){
-               toast('This email is already exist',toastOptions)
+               toast('T`his email is already exist',toastOptions)
                return false
           }else if(result.data.message==='This phone number is already exist'){
             toast('This phone number is already exist',toastOptions)
@@ -89,8 +89,8 @@ function Signup() {
       name='email' 
       value={input.email}
       onChange={handleChange}
-      type='email'
       id="email"
+      type='email'
       variant="standard" />
        <p>{signErr && !input.email && <label  style={{color:"red"}}>email is required</label> }</p>
 

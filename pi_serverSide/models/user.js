@@ -25,7 +25,9 @@ const userSchema=new Mongoose.Schema({
     status:{
         type:Boolean,
         required:true
-    }
+    },
+    resetToken:{type:String},
+    expireToken:{type:Date}
 })
 
 module.exports=Mongoose.model('user',userSchema)

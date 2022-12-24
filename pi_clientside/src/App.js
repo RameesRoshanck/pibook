@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage'
 import Test from './pages/Test';
 import ProfilePage from './pages/Profile/ProfilePage';
 import Admin from './AdminPages/Admin';
+import ResetPasswordPages from './pages/ResetPages/ResetPasswordPages';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/test' element={<Test/>} />
         <Route path='/profile' element={<ProfilePage/>} />
         <Route path='/admin' element={<Admin/>} />
+        <Route path='/reset' element={<ResetPasswordPages/>} />
       </Routes>
     </BrowserRouter>
     </div>
