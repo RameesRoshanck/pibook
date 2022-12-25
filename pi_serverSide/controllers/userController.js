@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt');
 const User=require ('../models/user');
 var crypto = require('crypto');
 var nodemailer = require('nodemailer');
+const userOtpVerification=require('../models/userOtpVerification');
+const user = require('../models/user');
 // var sendgridTransport = require('nodemailer-sendgrid-transport');
 
 const transporter=nodemailer.createTransport({
@@ -14,8 +16,11 @@ const transporter=nodemailer.createTransport({
 
 // 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
 
+
+
+/* -------------------------- //user authentication ------------------------- */
 const Signup=async(req,res)=>{
-    console.log(req.body,'signup');
+    // console.log(req.body,'signup');
     try{
         const{username,email,phone,password}=req.body
      
@@ -39,14 +44,11 @@ const Signup=async(req,res)=>{
             email,
             phone,
             password:hash,
-            status:true
+            status:true,
+            verified:false
+        }).then((createuser)=>{
+            sendOtp(createuser,res)
         })
-        // user.then((user)=>{
-        //     transporter.sendMail({
-        //         to:user.email,
-        //         from:"no-replay@pibook.com"
-        //     })
-        // })
         return res.status(200).json({message:"successfully Registered",user})
     }catch(error){
         console.log(error,'Signup error');
@@ -55,7 +57,7 @@ const Signup=async(req,res)=>{
 
 
 const login=async(req,res)=>{
-    console.log(req.body,'login');
+    // console.log(req.body,'login');
     const {email,password}=req.body
     try{
         if(!(email && password)){
@@ -79,6 +81,8 @@ const login=async(req,res)=>{
     }
 }
 
+
+/* ---------------------------- //forget password --------------------------- */
 const resetpass=(req,res)=>{
     const {email}=req.body
         crypto.randomBytes(32,(err,buffer)=>{
@@ -99,7 +103,7 @@ const resetpass=(req,res)=>{
                         subject:"password reset",
                         html:`
                         <p>you requested for password reset</P>
-                        <h3>click in this <a href="http://localhost:8000/reset/${token}"> link</a>to reset password</h3>
+                        <h3>click in this <a href="http://localhost:3000/reset/${token}"> link</a>to reset password</h3>
                         `
                     }).then(()=>{
                         // console.log('sdfsdfdfgdsf');
@@ -117,11 +121,12 @@ const resetpass=(req,res)=>{
     }
 
 const getReset=(req,res)=>{
-       const newPassword=req.body.password
+       const newPassword=req.body.reset.password
        const sentToken=req.body.token
+    //    console.log(req.body.reset.password,'jkkjj');
        User.findOne({resetToken:sentToken,expireToken:{$gt:Date.now()}}).then((user)=>{
         if(!user){
-            console.log('hai');
+            // console.log('hai');
             return res.status(422).json({message:"try again session expired"}) 
         }
         bcrypt.hash(newPassword,10).then((hashPassword)=>{
@@ -129,6 +134,7 @@ const getReset=(req,res)=>{
                user.resetToken=undefined
                user.expireToken=undefined
                user.save().then((result)=>{
+                console.log('success');
                 res.json({message:"password updated success"})
                })
         })
@@ -139,9 +145,91 @@ const getReset=(req,res)=>{
 }
 
 
+/* --------------------- //user otp emaile verification --------------------- */
+//send otp
+const sendOtp=async({_id,email},res)=>{
+   try{
+            const otp=`${Math.floor(1000 + Math.random() * 9000)}`
+                // User.findOne({email}).then(async (user)=>{
+                //     console.log(user,'user');
+                //     if(!user){
+                //         return res.status(422).json({message:"email is not found"}) 
+                //     }
+                    const maileOption={
+                        from:"ckmhdroshan@gmail.com",
+                        to:email,
+                        subject:"verify your email",
+                        html:`
+                        <p>enter ${otp} in the app to verify your email address</p>
+                        <p>This code <b> expire in 1 hour <b></P>
+                        `
+                    }
+                    const userOtp=await new userOtpVerification({
+                        userId:_id,
+                        otp,
+                        createdAt:Date.now(),
+                        expireAt:Date.now() + 3600000
+                    })
+                   await userOtp.save()
+                   transporter.sendMail(maileOption)
+                   console.log("successfull maileoption");
+                   return res.json({message:"Verification email otp send"})
+                // })
+   }catch(error){
+    console.log(error,'sendOtp');
+   }
+}
+
+const verifyOtp=async(req,res)=>{
+    console.log(req.body,'req.body');
+    try{
+        const { userId,otp}=req.body
+        if(!(userId && otp)){
+            return res.status(400).json({message:"all input are required"}) 
+        }
+        const verifyOtp=await userOtpVerification.findOne({userId:userId})
+            console.log(verifyOtp,'veryfyOtp');
+        if(!verifyOtp){
+            return res.status(400).json({message:"the account doesn't exist or has been verified already"}) 
+        }else{
+            const expireAt=verifyOtp.expireAt
+            const databaseOtp=verifyOtp.otp
+            console.log(expireAt,"expire at");
+            console.log(databaseOtp,"databaseOtp at");
+            if(expireAt < Date.now()){
+                await userOtpVerification.deleteMany({userId})
+                    return res.status(400).json({message:"otp has been required.please request again."})  
+                
+            }else{
+                const validOtp=await userOtpVerification.find({databaseOtp,otp})
+                if(!validOtp){
+                    return res.status(400).json({message:"invalid code passed.check your inbox"}) 
+                }else{
+                  await User.updateOne({_id:userId},{
+                    $set:{
+                        verified:true
+                    }
+                })
+                await userOtpVerification.deleteMany({userId})
+                console.log('successfully verified');
+                return res.status(400).json({message:"successfully verified"}) 
+               }
+        }
+    }
+    }catch(error){
+        console.log(error,'verifyotp');
+    }
+}
+
+
+
+
+
 module.exports={
     Signup,
     login,
     resetpass,
-    getReset
+    getReset,
+    verifyOtp
+
 }

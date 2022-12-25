@@ -5,9 +5,11 @@ import axios from 'axios';
 import swal from 'sweetalert'
  import { ToastContainer, toast } from 'react-toastify';
  import 'react-toastify/dist/ReactToastify.css';
+ import { useNavigate } from "react-router-dom";
 
 
 function ResetPassword(){
+  let navigate = useNavigate();
     const [reset,setReset]=useState({
       email:"",
     })
@@ -40,6 +42,7 @@ function ResetPassword(){
        }else{
             axios.post("http://localhost:8000/reset",reset).then((result)=>{
             console.log(result.data.message);
+            // navigate('/reset/:token')
            })
        }
 

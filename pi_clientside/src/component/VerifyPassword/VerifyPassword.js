@@ -5,8 +5,12 @@ import swal from 'sweetalert'
  import { ToastContainer, toast } from 'react-toastify';
  import 'react-toastify/dist/ReactToastify.css';
 import './Verifypassword.css'
+import { useNavigate,useParams } from "react-router-dom";
 
 function VerifyPassword() {
+  let navigate = useNavigate();
+  const {token}=useParams()
+  console.log(token,'hai token');
     const [reset,setReset]=useState({
       password:"",
     })
@@ -33,6 +37,17 @@ function VerifyPassword() {
    
     const handleSubmit=async(e)=>{
        e.preventDefault()
+      //  if(!reset.password){
+      //   setResetErr(true)
+      //   return false
+      //  }
+      console.log(token,'5566');
+       axios.post("http://localhost:8000/resetNew",{reset,token}).then((result)=>{
+        navigate("/home")
+          console.log(result.data.message,'result');
+       }).catch((error)=>{
+        console.log(error,'error');
+       })
     }
 
   return (

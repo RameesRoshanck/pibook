@@ -27,7 +27,20 @@ const userSchema=new Mongoose.Schema({
         required:true
     },
     resetToken:{type:String},
-    expireToken:{type:Date}
+    expireToken:{type:Date},
+    verified:{type:Boolean},
+    profilePicture:{
+        type:String,
+        default:""
+    },
+    coverPicture:{
+        type:String,
+        default:"" 
+    },
+    followers:{
+        type:Array,
+        default:[]
+    }
 })
 
 module.exports=Mongoose.model('user',userSchema)

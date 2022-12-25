@@ -8,6 +8,7 @@ import Test from './pages/Test';
 import ProfilePage from './pages/Profile/ProfilePage';
 import Admin from './AdminPages/Admin';
 import ResetPasswordPages from './pages/ResetPages/ResetPasswordPages';
+import ForgetPages from './pages/ResetPages/ForgetPages';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
         <Route path='/test' element={<Test/>} />
         <Route path='/profile' element={<ProfilePage/>} />
         <Route path='/admin' element={<Admin/>} />
-        <Route path='/reset' element={<ResetPasswordPages/>} />
+        <Route exact path='/reset' element={<ResetPasswordPages/>} />
+        <Route path='/reset/:token' element={<ForgetPages/>} />
       </Routes>
     </BrowserRouter>
     </div>
