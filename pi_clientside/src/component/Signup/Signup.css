@@ -53,3 +53,7 @@ button{
 .link-btn:hover{
     color:rgb(12, 12, 65);
 }
+
+.otpMain{
+    background-color: #7439db;
+}

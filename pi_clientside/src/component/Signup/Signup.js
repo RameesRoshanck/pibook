@@ -2,12 +2,19 @@ import React,{useState} from 'react'
 import './Signup.css'
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import swal from 'sweetalert'
  import { ToastContainer, toast } from 'react-toastify';
  import 'react-toastify/dist/ReactToastify.css';
+ import OTPInput, { ResendOTP } from "otp-input-react";
 
 
 function Signup() {
+  let navigate = useNavigate();
+  const [OTP, setOTP] = useState("");
+  const [otpverify,setOtpVerify]=useState(false)
+  const [userDetails,setUserDetails]=useState({})
+
   const [input,setInput]=useState({
       username:"",
       email:"",
@@ -45,15 +52,18 @@ function Signup() {
     }else{
       // console.log(input,'input');
       axios.post("http://localhost:8000/Signup",input).then((result)=>{
-          console.log(result);
+          console.log(result.data.user,'user details');
           if(result.data.message === 'successfully Registered'){
-            swal({
-              title: "Done!",
-              text: "successfully Registered",
-              icon: "success",
-              timer: 2000,
-              button: false
-            })
+            setUserDetails(result.data.user)
+            setOtpVerify(true)
+            // swal({
+            //   title: "Done!",
+            //   text: "successfully Registered",
+            //   icon: "success",
+            //   timer: 2000,
+            //   button: false
+            // })
+
           }else if(result.data.message==='this email is already exist'){
                toast('T`his email is already exist',toastOptions)
                return false
@@ -66,10 +76,42 @@ function Signup() {
       });
   }
 }
+//  console.log(userDetails._id,'OTP');
+const verify=(e)=>{
+  e.preventDefault()
+
+  let data={
+      otp:OTP,
+      userId:userDetails._id
+  }
+   if(OTP.length < 4){
+    console.log('enter the 4 digit otp');
+   }
+   else{
+    axios.post("http://localhost:8000/verifyotp",data).then((data)=>{
+      console.log(data.data.message,'message');
+      navigate("/")
+    }).catch((error)=>{
+      console.log(error,'otp catch errror');
+    })
+   }
+}
 
   return (
     
     <div className="parantDiv">
+
+
+     {otpverify? 
+      <div className="auth-form-conatiner">
+      <h2>Enter the OTP</h2>
+      <br />
+      <OTPInput value={OTP} onChange={setOTP} autoFocus OTPLength={4} otpType="number" disabled={false} secure />
+      <br />
+        <button className="btn" type="submit" onClick={(e)=>{verify(e)}} >Verify</button>
+      </div>
+      :
+     
     <div className="auth-form-conatiner" >
       <h2>Sign-up Page</h2>
       <form onSubmit={handleSubmit} className="login-form">
@@ -119,9 +161,11 @@ function Signup() {
       </form>
       <button className="link-btn">Forgotten password? </button>
       <button className="link-btn">Don't have an account ? Sign up here..</button>
-    </div>
-
       <ToastContainer/>
+    </div>
+    }
+     
+
   </div>
   )
 }

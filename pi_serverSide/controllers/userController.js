@@ -38,17 +38,20 @@ const Signup=async(req,res)=>{
         }
         
         const hash=await bcrypt.hash(password,10)
+       
 
-        const user=await User.create({
+        const user=await new User({
             username,
             email,
             phone,
             password:hash,
             status:true,
             verified:false
-        }).then((createuser)=>{
+        })
+        await user.save().then((createuser)=>{
             sendOtp(createuser,res)
         })
+        console.log(user,'user');
         return res.status(200).json({message:"successfully Registered",user})
     }catch(error){
         console.log(error,'Signup error');
@@ -106,14 +109,14 @@ const resetpass=(req,res)=>{
                         <h3>click in this <a href="http://localhost:3000/reset/${token}"> link</a>to reset password</h3>
                         `
                     }).then(()=>{
-                        // console.log('sdfsdfdfgdsf');
+                        console.log('sdfsdfdfgdsf');
                         return res.json({message:"check your Email"})
                     }).catch((error)=>{
-                        // console.log(error,'thenfgdfgdsf');
+                        console.log(error,'thenfgdfgdsf');
                     })
               
                 }).catch((error)=>{
-                    // console.log(error,'sdfsdf');
+                    console.log(error,'sdfsdf');
                 })
 
             })
@@ -150,6 +153,7 @@ const getReset=(req,res)=>{
 const sendOtp=async({_id,email},res)=>{
    try{
             const otp=`${Math.floor(1000 + Math.random() * 9000)}`
+            console.log(otp,'user');
                 // User.findOne({email}).then(async (user)=>{
                 //     console.log(user,'user');
                 //     if(!user){
@@ -172,8 +176,8 @@ const sendOtp=async({_id,email},res)=>{
                     })
                    await userOtp.save()
                    transporter.sendMail(maileOption)
-                   console.log("successfull maileoption");
-                   return res.json({message:"Verification email otp send"})
+                   console.log("successfull maileoption", userOtp);
+                   return res.json({message:"Verification email otp send",userOtp})
                 // })
    }catch(error){
     console.log(error,'sendOtp');
@@ -212,7 +216,7 @@ const verifyOtp=async(req,res)=>{
                 })
                 await userOtpVerification.deleteMany({userId})
                 console.log('successfully verified');
-                return res.status(400).json({message:"successfully verified"}) 
+                return res.json({message:"successfully verified"}) 
                }
         }
     }

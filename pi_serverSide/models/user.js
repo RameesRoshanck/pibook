@@ -40,6 +40,26 @@ const userSchema=new Mongoose.Schema({
     followers:{
         type:Array,
         default:[]
+    },
+    followins:{
+        type:Array,
+        default:[]
+    },
+    desc:{
+        type:String,
+        max:50
+    },
+    city:{
+        type:String,
+        max:50
+    },
+    from:{
+        type:String,
+        max:50
+    },
+    relationship:{
+        type:String,
+        default:"Single"
     }
 })
 
