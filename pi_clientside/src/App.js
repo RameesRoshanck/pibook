@@ -10,7 +10,17 @@ import Admin from './AdminPages/Admin';
 import ResetPasswordPages from './pages/ResetPages/ResetPasswordPages';
 import ForgetPages from './pages/ResetPages/ForgetPages';
 
+
 function App() {
+
+
+
+  
+              
+
+
+
+
   return (
     <div className="App">
     <BrowserRouter>
@@ -25,6 +35,7 @@ function App() {
         <Route path='/reset/:token' element={<ForgetPages/>} />
       </Routes>
     </BrowserRouter>
+
     </div>
   );
 }

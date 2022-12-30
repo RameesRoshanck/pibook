@@ -26,9 +26,9 @@ const postSchema=new Mongoose.Schema({
         type:String,
         default:'false'
     },
-    postedby:{
-     type:objectId,
-     ref:"user"
+    userId:{
+        type:String,
+        required:true
     },
      createdAt:{
         type:Date,

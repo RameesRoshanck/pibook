@@ -26,9 +26,15 @@ const userSchema=new Mongoose.Schema({
         type:Boolean,
         required:true
     },
-    resetToken:{type:String},
-    expireToken:{type:Date},
-    verified:{type:Boolean},
+    resetToken:{
+        type:String
+    },
+    expireToken:{
+        type:Date
+    },
+    verified:{
+        type:Boolean
+    },
     profilePicture:{
         type:String,
         default:""
@@ -41,7 +47,7 @@ const userSchema=new Mongoose.Schema({
         type:Array,
         default:[]
     },
-    followins:{
+    followings:{
         type:Array,
         default:[]
     },

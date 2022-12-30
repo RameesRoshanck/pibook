@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import TextField from '@mui/material/TextField';
 import { useNavigate } from "react-router-dom";
 import './login.css'
@@ -6,9 +6,22 @@ import axios from 'axios';
 import swal from 'sweetalert'
  import { ToastContainer, toast } from 'react-toastify';
  import 'react-toastify/dist/ReactToastify.css';
+import { UserAuthContext } from '../../Context/UserContext';
+
 
 
 function Login() {
+
+
+  const {authUser,setAuthUser}=useContext(UserAuthContext)
+  useEffect(()=>{
+    console.log(authUser,'usercontext');
+  })
+
+
+
+
+
     let navigate = useNavigate();
     const [login,setLogin]=useState({
       email:"",
@@ -49,6 +62,7 @@ function Login() {
           }else if(result.data.message==='incorect password'){
              toast("incorect password",toastOptions)
           }else{
+            setAuthUser(result.data.user)
             navigate("/home")
           }
         }).catch((error)=>{

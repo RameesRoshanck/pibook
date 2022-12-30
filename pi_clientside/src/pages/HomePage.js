@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Feed from '../component/Feeds/Feed'
 import Navbar from '../component/navbar/Navbar'
 import Rightbar from '../component/Rightbar/Rightbar'
@@ -7,9 +7,19 @@ import BottomNavbar from '../component/BottomNavbar/BottomNavbar'
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import './homepage.css'
+import { UserAuthContext } from '../Context/UserContext'
 
-function 
-home() {
+
+
+
+function HomePage() {
+
+  const {authUser,setAuthUser}=useContext(UserAuthContext)
+  useEffect(()=>{
+    console.log(authUser,'usercontext');
+  })
+
+  
   return (
     // <div>
     //     <Navbar/>
@@ -39,5 +49,4 @@ home() {
   )
 }
 
-export default 
-home
+export default HomePage
