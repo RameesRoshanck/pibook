@@ -31,8 +31,8 @@ function HomePage() {
     // </div>
      <Box sx={{ width: '100%' }}>
       <Navbar/>
-     <Grid container rowSpacing={{sm:2}} columnSpacing={{ md:1,}}>
-       <Grid container item sm={12} md={3}>
+     <Grid  container rowSpacing={{sm:0,md:0}} columnSpacing={{ md:1,}}>
+       <Grid container item sm={12} md={3} lg={3}>
        <Sidebar/>
        </Grid>
        <Grid container item sm={12} md={6}>

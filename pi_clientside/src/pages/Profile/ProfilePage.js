@@ -16,10 +16,12 @@ function ProfilePage() {
   return (
         <Box>
         <Navbar/>
-        <Grid rowSpacing={{sm:2}} columnSpacing={{ md:1,}}>
+        <Grid rowSpacing={{sm:0,md:0}} columnSpacing={{ md:1,}} style={{paddingTop:'65px'}}>
             <Grid item sm={12} md={12}>
                 {/* <Sidebar/> */}
-                <Container maxWidth="md">
+                <Container  >
+                <Container className='hidden md:block' >
+                <Container className='hidden md:block'>
                 <Grid item sm={12} md={12} className="profile">
                     <Grid item sm={12} md={12} className="profileTop">
                         <Grid className="profileCover">
@@ -33,16 +35,19 @@ function ProfilePage() {
                         <span className="profileinfoDiscretion">hello,how are you. where you go i'am there</span>
                         </Grid>
                     </Grid>
-                    <Grid container item sm={12} md={12} className="profileBottom">
-                        <Grid container item sm={12} md={8}>
-                            <Feed userStatus/>
-                        </Grid>
+                    <Grid container rowSpacing={{sm:2}} columnSpacing={{ md:1,}} className="profileBottom" >
                         <Grid container item sm={12}  md={4}>
                             <Rightbar userProfile/>
                         </Grid>
+                        <Grid  container item sm={12} md={8}>
+                            <Feed userStatus/>
+                        </Grid>
+                       
                     </Grid>
                 </Grid>
                 </Container>
+               </Container>
+               </Container>
             </Grid>
         </Grid>
     </Box>

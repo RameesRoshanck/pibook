@@ -7,6 +7,7 @@
     -webkit-box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.37);
     overflow-x: scroll;
     overflow-y: hidden;
+    /* margin-top:50px; */
 }
 .status::-webkit-scrollbar{
     display: none;

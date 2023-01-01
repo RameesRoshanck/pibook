@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import './rightbar.css'
 import image from '../../assets/elonmask.jpeg'
 import Button from '@mui/material/Button';
@@ -7,20 +7,20 @@ function Rightbar({userProfile}) {
 
   const HomeRightBar=()=>{
     return(
-      <>
-      <h4 className="rightBarTitle ">Online Friends</h4>
-          <hr className='posthr' />
-          <ul className="rightBarFriendsList">
-            <li className="rightbarFriends">
-              <div className="rightbarProfileImageContainer">
-              <img src={image} alt="img" className='rightBarProfileImg' />
-              <span className="rightBarOnline"></span>
-              </div>
-              <span className='rightBarUserName'>Roshan ck</span>
-              <Button className='follows' variant="contained">Follow</Button>
-            </li>
-          </ul>
-      </>
+     <div className="HomeRightBar">
+        <h4 className="rightBarTitle ">Online Friends</h4>
+           <hr className='posthr' />
+            <ul className="rightBarFriendsList">
+               <li className="rightbarFriends">
+                 <div className="rightbarProfileImageContainer">
+                  <img src={image} alt="img" className='rightBarProfileImg' />
+                  <span className="rightBarOnline"></span>
+                 </div>
+                 <span className='rightBarUserName'>Roshan ck</span>
+                 <Button className='follows' variant="contained">Follow</Button>
+                </li>
+            </ul>
+      </div>
     )
   }
 
@@ -76,16 +76,25 @@ function Rightbar({userProfile}) {
 
 
   return (
-    <div className='rightBar mt-4'>
-        <div className="rightBarWrapper">
-          {
-            userProfile? 
+    <Fragment>
+        {
+            userProfile?
+    <div className='rightBar1' style={{marginTop:'9px'}}>
+        <div className="rightBarWrapper1">
+         
             <ProfilePage/>
-            :
-            <HomeRightBar className='hidden md:block'/>
-          }
+        
         </div>
     </div>
+    :
+       <div className='rightBar' style={{marginTop:'70px'}}>
+       <div className="rightBarWrapper">
+           <HomeRightBar className='hidden md:block'/>
+        
+       </div>
+   </div>
+  }
+   </Fragment>
   )
 }
 

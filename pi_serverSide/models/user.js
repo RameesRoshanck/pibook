@@ -51,6 +51,10 @@ const userSchema=new Mongoose.Schema({
         type:Array,
         default:[]
     },
+    isAdmin:{
+        type:Boolean,
+        default:false
+    },
     desc:{
         type:String,
         max:50

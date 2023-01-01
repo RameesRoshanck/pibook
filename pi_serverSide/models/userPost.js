@@ -1,4 +1,5 @@
 const Mongoose=require('mongoose')
+const User=require ('../models/user');
 let objectId=require("mongodb").ObjectId
 
 
@@ -28,7 +29,8 @@ const postSchema=new Mongoose.Schema({
     },
     userId:{
         type:String,
-        required:true
+        required:true,
+        ref:User
     },
      createdAt:{
         type:Date,

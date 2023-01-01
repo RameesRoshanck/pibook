@@ -1,7 +1,7 @@
 .sideBar{
     height: calc(100vh - 50px);
     overflow-y: scroll;
-    width: 100%;
+    /* width: 25%; */
 }
 ::-webkit-scrollbar{
     width: 5px;

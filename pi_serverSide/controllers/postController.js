@@ -59,7 +59,7 @@ const deletePost=async(req,res)=>{
 }
 
 
-//like a post
+//like and dislike a post
 const likePost=async(req,res)=>{
     try{
         let postId=req.params.id
@@ -83,7 +83,7 @@ const likePost=async(req,res)=>{
 const getPost=async(req,res)=>{
     try{
         let PostId=req.params.id
-        let post=await Post.findById(PostId)
+        let post=await Post.findById(PostId).populate('userId')
         // console.log(post);
         return res.status(200).json({message:"get sigle post successfully",post}) 
     }catch(error){

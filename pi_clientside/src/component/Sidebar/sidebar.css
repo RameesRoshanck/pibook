@@ -1,7 +1,9 @@
 .sideBar{
-    height: calc(100vh - 50px);
+    /* height: calc(100vh - 50px); */
     overflow-y: scroll;
-    width: 100%;
+    position: fixed;
+    /* background-color: aqua; */
+    margin-top:67px;
 }
 ::-webkit-scrollbar{
     width: 5px;

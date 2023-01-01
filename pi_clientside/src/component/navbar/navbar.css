@@ -5,6 +5,9 @@
     border-bottom-color: #dcdcdc;
     border-bottom-width: 2px;
     height: 67px;
+    position:fixed;
+    z-index: 999;
+    /* margin-top:10px; */
   }
 .header-logo{
   outline: none;

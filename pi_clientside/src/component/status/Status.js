@@ -13,8 +13,8 @@ function Status() {
         <div className="status">
         <div className="statusWraper">
             <div className="statusToper">
-            <Fab color="secondary" aria-label="add">
-                <AddIcon />
+            <Fab style={{zIndex:"-1"}} color="secondary" aria-label="add">
+                <AddIcon  />
             </Fab>  
             </div>  
             <div className="statusToper">
